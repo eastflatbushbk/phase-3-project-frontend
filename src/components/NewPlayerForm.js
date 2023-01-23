@@ -33,3 +33,4 @@ const defaultData = {
         </div>
           )
     }
+    export default NewPlayerForm
