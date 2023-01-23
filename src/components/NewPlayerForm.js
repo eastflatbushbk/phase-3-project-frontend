@@ -19,6 +19,32 @@ const defaultData = {
         })
     }
 
+    function handleSubmit(event){
+        event.preventDefault()
+        const id = location.state.id;
+        console.log(id)
+        const createPlayer = {
+         name: formData.name,
+         position: formData.position,
+         status: formData.status,
+         team_id: id
+        }
+        console.log(createPlayer)
+        fetch("http://localhost:9292/players",{
+         method:"POST",
+         headers:{
+           "Content-Type" : "application/json",
+         },
+         body: JSON.stringify(createPlayer),
+        })
+        // .then((resp)=> resp.json())
+        // .then((data)=> {
+        //     console.log(data)
+        //     onAddTeam(data)});
+   
+        setFormData(defaultData)
+ }
+
         return (
             <div class="container">  
           <form id="contact"  onSubmit={handleSubmit}>
