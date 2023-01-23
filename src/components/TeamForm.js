@@ -5,3 +5,8 @@ const defaultData = {
     neighborhood: "",
     homeground: ""
     }
+
+    function TeamForm ({onAddTeam}){
+
+        
+    }
