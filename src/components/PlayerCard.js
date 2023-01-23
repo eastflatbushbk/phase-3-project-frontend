@@ -29,3 +29,4 @@ function PlayerCard ({player, onUpdatedPlayer, onDeletedPlayer}) {
     )
 
 }
+export default PlayerCard
