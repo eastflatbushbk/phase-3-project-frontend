@@ -12,6 +12,8 @@ import NewPlayerForm from "./components/NewPlayerForm.js";
 // import logo from './logo.svg';
 
 function App() {
+  const [teams, setTeams] = useState ([])
+  
   return (
     <div className="App">
       <header className="App-header">
