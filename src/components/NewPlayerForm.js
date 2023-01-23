@@ -8,6 +8,9 @@ const defaultData = {
       }
   
     function NewPlayerForm() {
+    const [formData, setFormData] = useState(defaultData)
+    const location = useLocation();
+    console.log(location.state)
 
         return (
             <div class="container">  
