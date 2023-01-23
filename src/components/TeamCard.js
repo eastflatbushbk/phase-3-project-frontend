@@ -9,6 +9,14 @@ const TeamCard = () => {
    const params = useParams()
    const navigate = useNavigate();
 
+   useEffect(()=>{
+    fetch(`http://localhost:9292/teams/${params.id}`)
+    .then((resp)=>resp.json())
+    .then(data=> {
+        console.log(data)
+        setTeam(data)})
+  },[])
+
 
 
 
