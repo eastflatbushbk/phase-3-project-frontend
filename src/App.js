@@ -1,5 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import NavBar from "./components/NavBar.js";
+import { Routes , Route} from "react-router-dom";
+import Headers from "./components/Headers.js";
+import TeamPage from "./components/TeamPage.js";
+import TeamCard from "./components/TeamCard.js";
+// import PlayerCard from "./components/PlayerCard.js";
+import TeamForm from "./components/TeamForm.js";
+import PlayerForm from "./components/PlayerForm.js";
+import NewPlayerForm from "./components/NewPlayerForm.js";
+
+// import logo from './logo.svg';
 
 function App() {
   return (
