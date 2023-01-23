@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-// import PlayerList from './PlayerList'
+
 import PlayerCard from './PlayerCard'
 
 const TeamCard = () => {
@@ -28,7 +28,7 @@ const TeamCard = () => {
   function handleClick (id){
     navigate('/add_player',{state:{id:id}})
   }
-  
+
   const player = team.players.map(p => <PlayerCard key={p.id} player={p} onUpdatedPlayer={handleUpdate} onDeletedPlayer={handleDeletedPlayer} />)
  
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
+
 
 function PlayerForm (){
     const [ playerInfo, setPlayerInfo ] = useState({
@@ -38,37 +38,15 @@ function PlayerForm (){
              "Content-Type": "application/json",
              "Accept": "application/json"
          },
-         // body: JSON.stringify(updatedPlayer)
+         
          body: JSON.stringify(updatedPlayer)
      })
-    //  .then((data) => onUpdatedPlayer(data))
-     // handleIsEditMode();
+    
      navigate('/teams')
-         // setIsEditMode(!isEditMode)
+         
      }
 
     return(
-//         <div>
-//             <h2>update player</h2>
-//       <form action="/action_page.php">
-//   <div class="form-group">
-//     <label for="name">Name</label>
-//     <input type="name" className="form-control" placeholder="player.name" name="name" onChange={handleInput} value={playerInfo.name}/>
-//   </div>
-//   <div class="form-group">
-//     <label for="pos">Position:</label>
-//     <input type="position" className="form-control" placeholder="player position" name="position"onChange={handleInput} value={playerInfo.position}/>
-//   </div>
-//   <div class="form-group form-check">
-//   <select name="status"  onChange={handleInput} value={playerInfo.status} >
-//             <option value= "available" hidden>Player status</option>
-//             <option name="status" value="available">available</option>
-//             <option name="status"value="unavailable">unavailable</option>
-//             </select>
-//   </div>
-//   <button type="button" className="btn btn-primary" onClick={handleUpdate} >update</button>
-// </form>
-// </div>
     
     <div class="container">  
   <form id="contact" >

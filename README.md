@@ -26,10 +26,11 @@ Teams
 - Homeground
 
 Players
--Name
--position
--status
--team_id
+- Name
+- position
+- status
+- team_id
+
 
 CRUD actions:
 The admin can:
