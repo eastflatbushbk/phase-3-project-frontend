@@ -32,7 +32,17 @@ import { NavLink } from "react-router-dom";
           background: "yellow",
         }}
       >
-      Add New Tgit add.eam
+      Add New Team
+      </NavLink>
+      <NavLink
+        to="/about"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "yellow",
+        }}
+      >
+      About
       </NavLink>
     </div>
       );

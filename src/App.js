@@ -8,6 +8,7 @@ import TeamCard from "./components/TeamCard.js";
 import TeamForm from "./components/TeamForm.js";
 import PlayerForm from "./components/PlayerForm.js";
 import NewPlayerForm from "./components/NewPlayerForm.js";
+import About from "./components/About.js";
 
 
 
@@ -36,6 +37,7 @@ function App() {
             
            <Route exact path="/add_team" element={<TeamForm onAddTeam={handleNewTeam}/>} />
            <Route exact path="/add_player" element={<NewPlayerForm />} />
+           <Route exact path="/about" element={<About />} />
              
             
             <Route  path="/teams/:id" element={<TeamCard />} />

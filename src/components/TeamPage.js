@@ -1,5 +1,6 @@
 import React from "react";
-import Team from "./Team";
+
+import TeamLink from "./TeamLink";
 
 function TeamPage ({teams}){
     //   const [teams, setTeams] = useState ([])
@@ -11,7 +12,7 @@ function TeamPage ({teams}){
     //         console.log(data)
     //         setTeams(data)})
     //   },[])
-     const teamList = teams.map( t => <Team key={t.id} team={t} />)
+     const teamList = teams.map( t => <TeamLink key={t.id} team={t} />)
     return(
         <div>
             <ul>

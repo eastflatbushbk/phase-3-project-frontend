@@ -1,78 +1,102 @@
-import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
-const defaultData = {
-    name: "",
-    position: "",
-    status: ""
-    }
-
-function NewPlayerForm() {
-    const [formData, setFormData] = useState(defaultData)
+function PlayerForm (){
+    const [ playerInfo, setPlayerInfo ] = useState({
+        name: "",
+        position: "",
+        status: ""
+    })
+    const navigate = useNavigate();
     const location = useLocation();
     console.log(location.state)
+    
 
-    function handleChange(event){
-        //setFormData(event.target.value)
-        setFormData({
-          ...formData, [event.target.name]:event.target.value,
+    function handleInput(event) {
+        setPlayerInfo({
+            ...playerInfo,
+            [event.target.name]: event.target.value
         })
     }
-    function handleSubmit(event){
-        event.preventDefault()
+
+    
+    function handleUpdate() {
         const id = location.state.id;
-        console.log(id)
-        const createPlayer = {
-         name: formData.name,
-         position: formData.position,
-         status: formData.status,
-         team_id: id
+          
+        console.log(id) 
+
+        const updatedPlayer = {
+            name: playerInfo.name,
+            position: playerInfo.position,
+            status: playerInfo.status
         }
-        console.log(createPlayer)
-        fetch("http://localhost:9292/players",{
-         method:"POST",
-         headers:{
-           "Content-Type" : "application/json",
+ 
+        fetch(`http://localhost:9292/players/${id}`, {
+         method: "PATCH",
+         headers: {
+             "Content-Type": "application/json",
+             "Accept": "application/json"
          },
-         body: JSON.stringify(createPlayer),
-        })
-        // .then((resp)=> resp.json())
-        // .then((data)=> {
-        //     console.log(data)
-        //     onAddTeam(data)});
-   
-        setFormData(defaultData)
- }
+         // body: JSON.stringify(updatedPlayer)
+         body: JSON.stringify(updatedPlayer)
+     })
+    //  .then((data) => onUpdatedPlayer(data))
+     // handleIsEditMode();
+     navigate('/teams')
+         // setIsEditMode(!isEditMode)
+     }
 
-
-
-    return (
-        <div class="container">  
-      <form id="contact"  onSubmit={handleSubmit}>
-        <h8>ADD NEW PLAYER</h8>
-        <h9>type new player info below</h9>
-        <fieldset>
-          <input placeholder="Player Name" value={formData.name} onChange={handleChange} type="text" tabindex="1" name="name" />
-        </fieldset>
-        <fieldset>
-          <input placeholder="Position" type="text" tabindex="2" required autofocus value={formData.position} onChange={handleChange} name="position" />
-        </fieldset>
-        <fieldset>
-          <input placeholder="Status" type="text" tabindex="3" required autofocus value={formData.status} onChange={handleChange} name="status" />
-        </fieldset>
-        
-        <fieldset>
-          <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-        </fieldset>
-      </form>
-     
-      
-    </div>
-      )
-
-
-
-
-
+    return(
+//         <div>
+//             <h2>update player</h2>
+//       <form action="/action_page.php">
+//   <div class="form-group">
+//     <label for="name">Name</label>
+//     <input type="name" className="form-control" placeholder="player.name" name="name" onChange={handleInput} value={playerInfo.name}/>
+//   </div>
+//   <div class="form-group">
+//     <label for="pos">Position:</label>
+//     <input type="position" className="form-control" placeholder="player position" name="position"onChange={handleInput} value={playerInfo.position}/>
+//   </div>
+//   <div class="form-group form-check">
+//   <select name="status"  onChange={handleInput} value={playerInfo.status} >
+//             <option value= "available" hidden>Player status</option>
+//             <option name="status" value="available">available</option>
+//             <option name="status"value="unavailable">unavailable</option>
+//             </select>
+//   </div>
+//   <button type="button" className="btn btn-primary" onClick={handleUpdate} >update</button>
+// </form>
+// </div>
+    
+    <div class="container">  
+  <form id="contact" >
+    <h8>UPDATE PLAYER</h8>
+    <h9>Update player info below</h9>
+    <fieldset>
+      <input placeholder="Player Name" onChange={handleInput} value={playerInfo.name} type="text" tabindex="1" name="name" />
+    </fieldset>
+    <fieldset>
+      <input placeholder="Position" type="text" tabindex="2" required autofocus onChange={handleInput} value={playerInfo.position} name="position" />
+    </fieldset>
+    <fieldset>
+      <select name="status"  onChange={handleInput} value={playerInfo.status} >
+                       <option value= "available" hidden>Player status</option>
+                       <option name="status" value="available">available</option>
+                        <option name="status"value="unavailable">unavailable</option>
+            </select>
+    </fieldset>
+    
+    <fieldset>
+      <button name="button" type="button" id="contact-submit" data-submit="...Sending" onClick={handleUpdate}>Update</button>
+    </fieldset>
+  </form>
+ 
+  
+</div>
+  
+    )
 }
-export default NewPlayerForm
+
+export default PlayerForm;

@@ -28,7 +28,7 @@ function PlayerCard ({player, onUpdatedPlayer, onDeletedPlayer}) {
               <p>✅{player.status}✅</p>)
               : (<p id="testid" class="example">🙁😒{player.status}🤔🙁</p> 
              ) }        
-        <a href="" className="btn"onClick={() => handleUpdate(player.id)}>update status</a>
+        <a href="" className="btn"onClick={() => handleUpdate(player.id)}>update info</a>
         <a href="" className="btn"onClick={() => handleDelete(player.id)}>delete player</a>
       </div>
     </article>

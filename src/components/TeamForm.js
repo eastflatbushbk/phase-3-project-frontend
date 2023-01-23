@@ -66,3 +66,4 @@ const defaultData = {
             )
 
     }
+    export default TeamForm
