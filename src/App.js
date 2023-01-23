@@ -4,32 +4,46 @@ import { Routes , Route} from "react-router-dom";
 import Headers from "./components/Headers.js";
 import TeamPage from "./components/TeamPage.js";
 import TeamCard from "./components/TeamCard.js";
-// import PlayerCard from "./components/PlayerCard.js";
+
 import TeamForm from "./components/TeamForm.js";
 import PlayerForm from "./components/PlayerForm.js";
 import NewPlayerForm from "./components/NewPlayerForm.js";
 
-// import logo from './logo.svg';
+
 
 function App() {
   const [teams, setTeams] = useState ([])
-  
+
+  useEffect(()=>{
+    fetch("http://localhost:9292/teams")
+    .then((resp)=>resp.json())
+    .then(data=> {
+        console.log(data)
+        setTeams(data)})
+  },[])
+
+  const handleNewTeam = (newTeam) => {
+    setTeams([...teams, newTeam]); 
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Headers />
+       <NavBar />
+       <Routes>
+           <Route exact path="/teams" element={<TeamPage teams={teams} />} />
+             
+            
+           <Route exact path="/add_team" element={<TeamForm onAddTeam={handleNewTeam}/>} />
+           <Route exact path="/add_player" element={<NewPlayerForm />} />
+             
+            
+            <Route  path="/teams/:id" element={<TeamCard />} />
+            <Route  path="/update_player" element={<PlayerForm />} />
+              
+             
+            
+       </Routes>
     </div>
   );
 }
