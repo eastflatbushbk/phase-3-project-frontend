@@ -12,6 +12,13 @@ const defaultData = {
     const location = useLocation();
     console.log(location.state)
 
+    function handleChange(event){
+        
+        setFormData({
+          ...formData, [event.target.name]:event.target.value,
+        })
+    }
+
         return (
             <div class="container">  
           <form id="contact"  onSubmit={handleSubmit}>
