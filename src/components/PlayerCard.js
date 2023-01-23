@@ -3,7 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 function PlayerCard ({player, onUpdatedPlayer, onDeletedPlayer}) {
 
+    const navigate = useNavigate();
 
+    function handleDelete(id) {
+        fetch(`http://localhost:9292/players/${id}`, {
+        method: "DELETE", 
+        }) 
+        .then((data) => onDeletedPlayer(data));
+    }
+    function handleUpdate(id) {
+        console.log(id)
+         navigate('/update_player',{state:{id:id}})
+    }
 
     return (
         <div className="box">
