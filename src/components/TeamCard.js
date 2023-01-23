@@ -18,7 +18,21 @@ const TeamCard = () => {
   },[])
 
 
-
+  return (
+    <div>
+        <br />
+       <h2>{team.name}</h2>
+       <h5>from  {team.neighborhood}</h5>
+       <h6>Plays in {team.homeground}</h6>
+       <br />
+       <a href="" className="btn"onClick={() => handleClick(team.id)}>add new player</a>
+       <br/>
+       <h3>Players:</h3>
+       <br />
+       {player}
+       <br />
+    </div>
+  )
 
 
 
