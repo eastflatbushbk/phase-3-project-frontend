@@ -7,6 +7,30 @@ const defaultData = {
     }
 
     function TeamForm ({onAddTeam}){
+        const [formData, setFormData] = useState(defaultData)
+
+        function handleSubmit(event){
+            event.preventDefault()
+            const createTeam = {
+             name: formData.name,
+             neighborhood: formData.neighborhood,
+             homeground: formData.homeground
+            }
+            console.log(createTeam)
+            fetch("http://localhost:9292/teams",{
+             method:"POST",
+             headers:{
+               "Content-Type" : "application/json",
+             },
+             body: JSON.stringify(createTeam),
+            })
+            .then((resp)=> resp.json())
+            .then((data)=> {
+                console.log(data)
+                onAddTeam(data)});
+       
+            setFormData(defaultData)
+     }
 
 
 
