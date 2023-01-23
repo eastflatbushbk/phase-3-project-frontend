@@ -32,7 +32,11 @@ const defaultData = {
             setFormData(defaultData)
      }
 
-
+     function handleChange(event){
+        
+        setFormData({
+          ...formData, [event.target.name]:event.target.value,
+        })
 
         return(
        
