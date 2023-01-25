@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
- const Team = ({team}) => {
+ const TeamLink = ({team}) => {
   return (
     <div>
         <Link to={`${team.id}`}>
@@ -10,4 +10,4 @@ import { Link } from 'react-router-dom'
     </div>
   )
 }
-export default Team
+export default TeamLink

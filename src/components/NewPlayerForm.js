@@ -37,10 +37,7 @@ const defaultData = {
          },
          body: JSON.stringify(createPlayer),
         })
-        // .then((resp)=> resp.json())
-        // .then((data)=> {
-        //     console.log(data)
-        //     onAddTeam(data)});
+        
    
         setFormData(defaultData)
  }

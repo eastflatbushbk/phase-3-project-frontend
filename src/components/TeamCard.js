@@ -25,6 +25,7 @@ const TeamCard = () => {
     const deletedPlayer = team.players.filter(player => player.id !== id);
     setTeam(deletedPlayer);
   }
+  
   function handleClick (id){
     navigate('/add_player',{state:{id:id}})
   }
@@ -40,7 +41,7 @@ const TeamCard = () => {
        <h5>from  {team.neighborhood}</h5>
        <h6>Plays in {team.homeground}</h6>
        <br />
-       <a href="" className="btn"onClick={() => handleClick(team.id)}>add new player</a>
+       <a href="http://localhost:3000/add_player" className="btn"onClick={() => handleClick(team.id)}>add new player</a>
        <br/>
        <h3>Players:</h3>
        <br />
